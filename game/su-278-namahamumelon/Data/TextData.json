@@ -1,0 +1,92 @@
+[
+	{
+		"Label": "Title",
+		"ja": "SnlSkeleton",
+		"en": "SnlSkeleton",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "TitleBtnCJS",
+		"ja": "CreateJSエフェクトテスト",
+		"en": "CreateJS EffTest",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "TitleBtnCreap",
+		"ja": "レイアウト&Creapエフェクトテスト",
+		"en": "Layout&CreapTest",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "TitleBtnSpine",
+		"ja": "Spineエフェクトテスト",
+		"en": "Spine Test",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "TitleBtnLangChange",
+		"ja": "日本語→英語\n（テキストのみ）",
+		"en": "English→JP\n（Text Only）",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "ReplaceTest",
+		"ja": "置換テスト\nハイスコア:|HighScore|\nステージ:|StageNo|\nクリアボーナス:|ClearBonus|\nヒント数:|HintNum|",
+		"en": "Replace Test\nHighScore:|HighScore|\nStage:|StageNo|\nClearBonus:|ClearBonus|\nHintNum:|HintNum|",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "ScoreAdd",
+		"ja": "Score +100",
+		"en": "Score +100",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "RewardAdTest",
+		"ja": "Score +2000\n(リワード広告)",
+		"en": "Score +2000\n(RewardAds)",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "EndBtn",
+		"ja": "終了",
+		"en": "Exit",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	},
+	{
+		"Label": "DispScore",
+		"ja": "スコア:|Score|",
+		"en": "Score:|Score|",
+		"zh-cn": "",
+		"zh-tw": "",
+		"ru": "",
+		"id": ""
+	}
+]

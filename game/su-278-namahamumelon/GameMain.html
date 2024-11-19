@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no, initial-scale=1" />
+        <title>Game</title>
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=q6nvQ0cCIcXP1K4h0iZcWGtkAHIdDfcdiOEywYkYCRRVfDGCXnEszqtQWGetrpVLuqGIKWlnsRtlx9CZ5wcRKM4XiUjoVhGVVriPCPMHAHN7Lc8QxnVflNWIPgg2KkwF" charset="UTF-8"></script><style>
+            body {
+                margin: 0;
+                overflow: hidden;
+                background-color: #000;
+            }
+
+            img {
+                width: 10px;
+                height: 10px;
+            }
+
+            #promotion-window, #game-credit {
+                background-color: rgba(0, 0, 0, .2);
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 99998;
+                font-family: メイリオ, Meiryo, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', sans-serif, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, Roboto, 'Droid Sans', 游ゴシック, YuGothic;
+                user-select: none;
+            }
+            #promotion-window *, #game-credit * {
+                box-sizing: border-box;
+                margin: 0;
+            }
+            #promotion-window > div {
+                background-color: white;
+                width: 280px;
+                height: 320px;
+                outline-color: rgba(0, 0, 0, .4);
+                outline-style: solid;
+                outline-width: 1px;
+                position: absolute;
+                top: calc(50% - 160px);
+                left: calc(50% - 140px);
+            }
+            #game-credit > div {
+                background-color: white;
+                width: 320px;
+                height: 380px;
+                position: absolute;
+                top: calc(50% - 190px);
+                left: calc(50% - 160px);
+                border-radius: 15px;
+                overflow: hidden;
+            }
+            #game-credit .game-credit-header {
+                height: 50px;
+            }
+            .game-credit-header .title {
+                width: initial;
+                height: initial;
+                position: absolute;
+                left: 10px;
+            }
+            .game-credit-header #game-credit-close {
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                cursor: pointer;
+            }
+            #game-credit .game-credit-main {
+                height: calc(100% - 50px);
+                overflow-y: scroll;
+            }
+            .game-credit-main section {
+                height: 80px;
+                padding: 13px 0;
+                text-align: center;
+            }
+            .game-credit-main section h2 {
+                font-weight: normal;
+                font-size: 16px;
+            }
+            .game-credit-main section p {
+                font-size: 10px;
+            }
+            #promotion-window.start .buttons {
+                margin-top: 15px;
+            }
+            #promotion-window.end .buttons {
+                margin-top: calc(130px / 3);
+            }
+            #promotion-window.end .buttons:last-child {
+                display: none;
+            }
+            #promotion-window a {
+                color: white !important;
+                font-size: 1.2em;
+                font-weight: 600;
+                max-width: 90%;
+                line-height: 40px;
+                border-radius: 8px;
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                text-decoration: none;
+            }
+            #promotion-window p {
+                font-size: 0.8em;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+            }
+
+            ins#google_pedestal_container {
+                display : none !important;
+            }
+
+            @keyframes blinking {
+                0% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        </style>
+        
+        <link rel="stylesheet" type="text/css" href="../web/modal-video/modal-video.min.css">
+        <link rel="stylesheet" type="text/css" href="../web/tingle/tingle.css">
+        
+        <!-- <script>
+            window.game_id = "su-278-namahamumelon";
+            window.snd_game_id = "278";
+            window.game_name = "なまはむめろんゲーム";
+            window.game_sizeX = "640";
+            window.game_sizeY = "800";
+            window.menuItem = {
+                position: 0,
+                size: 50,
+                responsive: 1            };
+            window.ipADDR = "105.74.64.70";
+            window.device = "sp";
+            window.isTestServer = 0;
+            window.isAfg = true;
+            if (window.self === window.top || window.frameElement === null) {
+                window.top.location.href = "../play/su-278-namahamumelon";
+            }
+            window.howtoplay = "";
+            window.isSoundRanking = false;
+            window.howToMovieID = "";
+        </script> -->
+                <!-- GoogleAdSence -->
+        <script async
+                data-ad-client="ca-pub-1306297722460299"
+                                data-ad-frequency-hint="30s"
+                data-ad-channel="7405122072"
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+        </script>
+
+        <script>
+            window.adsbygoogle = window.adsbygoogle || [];
+            const adBreak = adConfig = function (o) {
+                adsbygoogle.push(o);
+            }
+        </script>
+        <!-- GoogleAdSenceEnd -->
+    </head>
+
+    <body>
+        
+        <div id="pixiview"></div>
+        <video id="contentElement" style="display:none;"></video>
+        <div id="adContainer" style="display:none;z-index:100000;background-color:black;position:absolute;top:0;bottom:0;left:0;right:0;"></div>
+        <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+        <script type="text/javascript" src="../web/afg.js?ver=1609211161"></script>
+
+        <!-- 横もちの警告 -->
+        <div id="warning_port" style="position:absolute; z-index:100000; top:0; overflow:hidden; width:100%; height:100%; background-color:#f1bf27; display:none;">
+            <img id="img_port" src="../web/img/portrait_warning.png" style="width:80%; height:auto; display:block; margin:0 auto;">
+        </div>
+
+        <!-- リワード動画広告 -->
+        <div id="adview"></div>
+        <script type="text/javascript" src="../web/jquery-1.12.1.min.js?ver=20170307142407"></script>
+        <script type="text/javascript" src="../web/api_reward.js?ver=1539571338"></script>
+        	
+        <!-- 動画説明用 -->
+        <div data-video-id="" class="js-modal-video"></div>
+        <script type="text/javascript" src="../web/modal-video/modal-video.min.js?ver=20220801183020"></script>
+		<script type="text/javascript" src="../web/modal-video/jquery-modal-video.min.js?ver=20220801183020"></script>
+
+		<!-- モーダル用 -->
+		<script type="text/javascript" src="../web/tingle/tingle.min.js?ver=20220801183020"></script>
+		
+
+        <!-- BlockAdBlock警告 -->
+        <div id="warning_adblock"></div>
+
+        <!-- 背面のタッチイベントを覆う要素 -->
+        <div id="nontouch" style="position:absolute; z-index:99998; background-color:rgba(0,0,0,0.5);width:100%; height:100%; top:0; visibility:hidden;"></div>
+
+        <!-- サイドメニュー -->
+        <div id="menu"></div>
+
+        <div id="game_tab"></div>
+
+        <div id="promotion-window" class="start" style="display: none;">
+            <div>
+                <div style="background-color: rgb(221, 221, 221); width: 100%; height: 50px; margin: 0px !important;">
+                    <img src="../../assets/img/thumbnail/basic/su-278-namahamumelon.png" alt="" style="width: 50px; height: 50px; position: absolute;">
+                    <div style="line-height: 50px; margin-left: 60px; font-size: 14px; overflow: hidden;">なまはむめろんゲーム</div>
+                </div>
+                <div class="buttons">
+                    <a href="https://h5games.success-corp.co.jp/user/register/pre" target="_blank" style="width: 7.2em; background-color: seagreen;">新規会員登録</a>
+                    <p>新規会員登録で3000MCプレゼント！</p>
+                </div>
+                <div class="buttons">
+                    <a href="https://h5games.success-corp.co.jp/user/auth/login/success" target="_top" style="width: 6em; background-color: orange;">LOGIN</a>
+                    <p>ログインして窓コインを保存</p>
+                </div>
+                <div class="buttons">
+                    <a href="#" style="width: 12em; background-color: deepskyblue;" onclick="document.querySelector('#promotion-window').style.display = 'none'; return false;">LOGINせずプレイ</a>
+                    <p>窓コインは保存できません</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="game-credit" style="display: none;">
+            <div>
+                <div class="game-credit-header">
+                    <img src="https://h5games.success-corp.co.jp/assets/img/game_credit_title.png?1617687753" class="title" />                    <img src="https://h5games.success-corp.co.jp/assets/img/game_credit_close.png?1617687759" id="game-credit-close" />                </div>
+                <div class="game-credit-main">
+                    <section><h2>なまはむめろんゲーム</h2><p>Development Team</p><p>INABA Aiko/KIM Juyeon/AOIEONG Meisan</p></section><section><h2>んがつくしりとり</h2><p>Development Team</p><p>INABA Aiko/PARK Juhyeong/AOIEONG Meisan</p></section><section><h2>モグレ！ワレワレハ地底人</h2><p>Development Team</p><p>INABA Aiko/YAMAHARA Ryuji/KIKUCHI Yuna</p></section><section><h2>デモリッシュ・ピラミッド</h2><p>Development Team</p><p>HOSHINO Wataru/TANAKA Ren/KANAMORI Miki</p></section><section><h2>キューピッド練習中</h2><p>Development Team</p><p>INABA Aiko/PARK Juhyeong/AOIEONG Meisan</p></section><section><h2>六角形がきらいになる迷路</h2><p>Development Team</p><p>USUI Katsumi/KIM Juyeon/AOIEONG Meisan</p></section><section><h2>1234がムズカシイ</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KIKUCHI Yuna</p></section><section><h2>きらめきビームストライク</h2><p>Development Team</p><p>INABA Aiko/SHIN Donghoon/KIKUCHI Yuna</p></section><section><h2>ソリティアペンギン</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/IDO Haruna</p></section><section><h2>エネミーシューター</h2><p>Development Team</p><p>INABA Aiko/FUJIHARA Shota/KIKUCHI Yuna</p></section><section><h2>コネクトフラワーボール</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KIKUCHI Yuna</p></section><section><h2>ソリティアイーストヘブン</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/TAMURA Jumpei</p></section><section><h2>永遠の数学パズル</h2><p>Development Team</p><p>INABA Aiko/PARK Juhyeong/AOIEONG Meisan</p></section><section><h2>パズルタイニー合唱団ル～</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/AOIEONG Meisan</p></section><section><h2>毎日ぴたんこ文字ならべ</h2><p>Development Team</p><p>INABA Aiko/KIM Juyeon/KIKUCHI Yuna</p></section><section><h2>パズル間取りックス！</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>イーグルウィング</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KIKUCHI Yuna</p></section><section><h2>スイッチコロコロ</h2><p>Development Team</p><p>USUI Katsumi/FUJIHARA Shota/PARK Juhyeong/TAMURA Jumpei</p></section><section><h2>ソリティアエジプトの盗賊</h2><p>Development Team</p><p>INABA Aiko/PARK Juhyeong/KIKUCHI Yuna</p></section><section><h2>毎日これどこ探し</h2><p>Development Team</p><p>INABA Aiko/KIM Seongjun/AOIEONG Meisan</p></section><section><h2>脱出！すしづめパーキング</h2><p>Development Team</p><p>INABA Aiko/YAMAHARA Ryuji/AOIEONG Meisan</p></section><section><h2>2048</h2><p>Development Team</p><p>INABA Aiko/SHIN Donghoon/AOIEONG Meisan</p></section><section><h2>毎日ぽたり四字熟語の泉</h2><p>Development Team</p><p>INABA Aiko/SHIN Donghoon/KIKUCHI Yuna</p></section><section><h2>メタルサーガS</h2><p>Development Team</p><p>SUZUKI Hiroto/WATANABE Yuta/HARA Daiki/JUNG daejun/TAMURA Jumpei/MIKAMI Masashi</p></section><section><h2>ウシは左へトラ右へ</h2><p>Development Team</p><p>INABA Aiko/KIM Seongjun/IKEGAKI Teiko</p></section><section><h2>くっつき亀の子パズル</h2><p>Development Team</p><p>INABA Aiko/KIM Juyeon/KIKUCHI Yuna</p></section><section><h2>Ｌ×Ｌパズル</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>斜線引き〼パズル</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KIKUCHI Yuna</p></section><section><h2>スライムつみつみクエスト</h2><p>Development Team</p><p>INABA Aiko/Asada Katsuaki/Kikuci Yuina</p></section><section><h2>うごくおんなじあつめ</h2><p>Development Team</p><p>INABA Aiko/Asada Katsuaki/KAMEYAMA Maino</p></section><section><h2>数が多いほうのまるが勝ち</h2><p>Development Team</p><p>INABA Aiko/FUJIHARA Shota/IKEGAKI Teiko</p></section><section><h2>ソリティアオーストラリアの忍耐</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>エース＆キング</h2><p>Development Team</p><p>INABA Aiko/SHIN Donghoon/KIKUCHI Yuna</p></section><section><h2>パズル数字かこってWA！</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>弾幕ビーフ</h2><p>Development Team</p><p>INABA Aiko/TEE Lookeong/KU Wei</p></section><section><h2>1010！蟻とブロックパズル</h2><p>Development Team</p><p>INABA Aiko/KIM Juyeon/IKEGAKI Teiko</p></section><section><h2>パズルユーレイ＆ツリー</h2><p>Development Team</p><p>INABA Aiko/KIM Juyeon/AOIEONG Meisan</p></section><section><h2>ソリティアシンプルシモン</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>ソリティアロシアン</h2><p>Development Team</p><p>INABA Aiko/NOMURA Takumi/IDO Haruna</p></section><section><h2>ハムなかまっちならべー</h2><p>Development Team</p><p>INABA Aiko/Kim Juyeon/KAMEYAMA Maino</p></section><section><h2>嘘吐きパズル</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>くるくるハムスターRUN</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>焼きたてパンランナー</h2><p>Development Team</p><p>INABA Aiko/YAMAHARA Ryuji/KAMEYAMA Maino</p></section><section><h2>俺様パズル 対称ロジック</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>キャンフィールド</h2><p>Development Team</p><p>INABA Aiko/Kim Juyeon/KAMEYAMA Maino</p></section><section><h2>毎日ナンプレチャレンジ！</h2><p>Development Team</p><p>INABA Aiko/YAMAHARA Ryuji/KAMEYAMA Maino</p></section><section><h2>レッド＆ブラック</h2><p>Development Team</p><p>INABA Aiko/BYEON Heeju/KAMEYAMA Maino</p></section><section><h2>おえかき迷路パズル</h2><p>Development Team</p><p>INABA Aiko/Shota Fujihara/KAMEYAMA Maino</p></section><section><h2>ホイップ＆キャンドル</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>ソリティアシンプリシティ</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>るいるい数字さがし</h2><p>Development Team</p><p>INABA Aiko/Asada Katsuaki/KAMEYAMA Maino</p></section><section><h2>ソリティアオズモシス</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>ウォール＆ペイント</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>ぱぴよんぼや～じゅ</h2><p>Development Team</p><p>INABA Aiko/TEE Lookeong/KAMEYAMA Maino</p></section><section><h2>ぼむぼむバブルアタック！</h2><p>Development Team</p><p>INABA Aiko / KIM Seongjun / KAMEYAMA Maino</p></section><section><h2>Circle環り逢う世界</h2><p>Development Team</p><p>KATO Akira / BYEON Heeju / TAMURA Jumpei</p></section><section><h2>パズル点つないでWA</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>進め！ドーナツ</h2><p>Development Team</p><p>KATO Akira/YAMAHARA Ryuji/TAMURA Jumpei</p></section><section><h2>アクアリウムクリッカー</h2><p>Development Team</p><p>INABA Aiko/SAITO Fukushi/IKEGAKI Teiko</p></section><section><h2>ソリティアメイズ</h2><p>Development Team</p><p>INABA Aiko/SAITO Fukushi/SAKAGUCHI Natsumi</p></section><section><h2>ソリティア40人の盗賊</h2><p>Development Team</p><p>INABA Aiko/ISHIKAWA Rin/SAKAGUCHI Natsumi</p></section><section><h2>花札乱舞花合わせ！</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>漢字ナンクロ1000！4</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KU Wei</p></section><section><h2>ルームシェアパズル</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>ソリティア1000！</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>エアホッケー3D</h2><p>Development Team</p><p>INABA Aiko/KIM Seongjun/KAMEYAMA Maino</p></section><section><h2>キューブつなぐ</h2><p>Development Team</p><p>INABA Aiko/NATSU Kashu/KAMEYAMA Maino</p></section><section><h2>ソリティアインディアン</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>コインは何枚でショー！</h2><p>Development Team</p><p>KYODA Yuki/YAMAHARA Ryuji/TAMURA Jumpei</p></section><section><h2>馬育成ハングリーダービー</h2><p>Development Team</p><p>KYODA Yuki/KODERA Katsuya/TAMURA Jumpei</p></section><section><h2>入れ替えパズル名画収集家</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>ソリティアダブルアップ</h2><p>Development Team</p><p>NAGATOMO Shinya/YAMAHARA Ryuji/TAMURA Jumpei</p></section><section><h2>不等号ナンプレ1000！</h2><p>Development Team</p><p>INABA Aiko / KIM Seongjun / AOIEONG Meisan</p></section><section><h2>ぞくぞくペンギンRUN</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>マインスイーパSTEP</h2><p>Development Team</p><p>INABA Aiko/KIM Seongjun/KAMEYAMA Maino</p></section><section><h2>上昇てんとう虫！JUMP</h2><p>Development Team</p><p>INABA Aiko / KASHU Natsu / KU Wei</p></section><section><h2>ソリティアレディジェーン</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>ライト＆マッシュルーム</h2><p>Development Team</p><p>INABA Aiko/HARA Daiki/KAMEYAMA Maino</p></section><section><h2>七ならべ沼</h2><p>Development Team</p><p>INABA Aiko / KASHU Natsu / KAMEYAMA Maino</p></section><section><h2>開け！迷宮の扉</h2><p>Development Team</p><p>KATO Akira / YAMAHARA Ryuji / KU Wei</p></section><section><h2>Dots&Boxes</h2><p>Development Team</p><p>KATO Akira / KIM Seongjun / AOIEONG Meisan</p></section><section><h2>合体防御 -数の変-</h2><p>Development Team</p><p>INABA Aiko / TEE Lookeong / KU Wei</p></section><section><h2>ひとふで10メイクパズル</h2><p>Development Team</p><p>USUI Katsumi / KIM Seongjun / AOIEONG Meisan</p></section><section><h2>おひとりさまパズル</h2><p>Development Team</p><p>INABA Aiko / HARA Daiki / KAMEYAMA Maino</p></section><section><h2>ババ抜きチャレンジ</h2><p>Development Team</p><p>KATO Akira / KIM Seongjun / MORIYAMA Miyu</p></section><section><h2>ヘキサ9ブロック！</h2><p>Development Team</p><p>KATO Akira / KIM Seongjun / MORIYAMA Miyu</p></section><section><h2>ジグソー美術館</h2><p>Development Team</p><p>INABA Aiko / HARA Daiki / KAMEYAMA Maino</p></section><section><h2>ナンプレスパイダー</h2><p>Development Team</p><p>INABA Aiko / TEE Lookeong / KAMEYAMA Maino</p></section><section><h2>ソリティア2048</h2><p>Development Team</p><p>INABA Aiko / KASHU Natsu / KAMEYAMA Maino</p></section><section><h2>ヨコカラタワーサーチ！</h2><p>Development Team</p><p>INABA Aiko / KASHU Natsu / KAMEYAMA Maino</p></section><section><h2>ナンバーライン</h2><p>Development Team</p><p>KATO Akira / KODERA Katsuya / MORIYAMA Miyu</p></section><section><h2>ソリティア1to20</h2><p>Development Team</p><p>INABA Aiko / KIM Seongjun / KAMEYAMA Maino</p></section><section><h2>マインスイーパ1000！</h2><p>Development Team</p><p>INABA Aiko / KIM Seongjun / KAMEYAMA Maino</p></section><section><h2>ソリティアコネクト</h2><p>Development Team</p><p>INABA Aiko / KIM Seongjun / KAMEYAMA Maino</p></section><section><h2>大富豪</h2><p>Development Team</p><p>INABA Aiko / KIM Seongjun / KAMEYAMA Maino</p></section><section><h2>クラッシュボンバー</h2><p>Development Team</p><p>KATO Akira / KASHU Natsu / TAMURA Jumpei</p></section>                </div>
+            </div>
+        </div>
+
+        <script id="twitter-wjs" src="//platform.twitter.com/widgets.js"></script>
+        <script type="text/javascript" src="../web/blockAdBlock.js?ver=20171020152400"></script>
+        <script type="text/javascript" src="../web/SU_Api.js?ver=20240208110716"></script>
+        <script type="text/javascript" src="../web/Ads_Api.js?ver=20230725125111"></script>
+        <script type="text/javascript" src="./js/lib/pixi652L.js?ver=20240805100235"></script>
+<script type="text/javascript" src="./js/lib/Creap.min.js?ver=20240805100235"></script>
+<script type="text/javascript" src="./js/lib/createjs.min.js?ver=20240805100232"></script>
+<script type="text/javascript" src="./js/lib/pixi-spine.js?ver=20240805100234"></script>
+<script type="text/javascript" src="./js/lib/matter.min.js?ver=20240805100235"></script>
+<script type="text/javascript" src="./js/lib/pixi-filters.js?ver=20240805100233"></script>
+<script type="text/javascript" src="./js/lib/Tween.js?ver=20240805100233"></script>
+<script type="text/javascript" src="./js/lib/decomp.min.js?ver=20240805100234"></script>
+<script type="text/javascript" src="./js/lib/pathseg.js?ver=20240805100234"></script>
+<script type="text/javascript" src="./Effect/EffectCrTitle.js?ver=20240805100234"></script>
+<script type="text/javascript" src="./EffectCJS/EffectCJS_uso_a.js?ver=20240805100234"></script>
+<script type="text/javascript" src="./js/Snl/SnlPixiMgr.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlMath.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlObject.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlButton.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlNumDisp.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlFPS.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlScroll.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlSound.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlFader.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlImageMgr.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlLoadingGauge.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlDataTbl.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlPoly2D.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlKeyboard.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/Snl/SnlCreditBtn.js?ver=20240805100309"></script>
+<script type="text/javascript" src="./js/SucCmn/SUGC_ExApi.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/SucCmn/Layout/LayoutUtil.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/SucCmn/Layout/LayoutReproduction.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/SucCmn/Layout/UiUtility.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/SucCmn/Effect/EffectMgr.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/SucCmn/Effect/EffectObj.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/SucCmn/Effect/EffectMgrCJS.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/SucCmn/Effect/SpineMgr.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/SucCmn/Effect/SpineObj.js?ver=20240805100310"></script>
+<script type="text/javascript" src="./js/Define/ImgInfo.js?ver=20240806095509"></script>
+<script type="text/javascript" src="./js/Define/GameDefine.js?ver=20240805100232"></script>
+<script type="text/javascript" src="./js/Game/SaveDataMgr.js?ver=20240805100233"></script>
+<script type="text/javascript" src="./js/Game/GameDataMgr.js?ver=20240805100231"></script>
+<script type="text/javascript" src="./js/Game/Board.js?ver=20240806095509"></script>
+<script type="text/javascript" src="./js/Game/GameMainUI.js?ver=20240805100231"></script>
+<script type="text/javascript" src="./js/Game/ModalPause.js?ver=20240805100231"></script>
+<script type="text/javascript" src="./js/Game/GameResultUI.js?ver=20240805100233"></script>
+<script type="text/javascript" src="./js/Game/ModalRule.js?ver=20240806095509"></script>
+<script type="text/javascript" src="./js/Game/ModalConfirm.js?ver=20240805100234"></script>
+<script type="text/javascript" src="./js/Game/Player.js?ver=20240806095509"></script>
+<script type="text/javascript" src="./js/Game/MatterMgr.js?ver=20240805100233"></script>
+<script type="text/javascript" src="./js/Mode/ModeMain.js?ver=20240805100233"></script>
+<script type="text/javascript" src="./js/Mode/ModeTitle.js?ver=20240805100235"></script>
+<script type="text/javascript" src="./js/Mode/ModeLoading.js?ver=20240805100232"></script>
+<script type="text/javascript" src="./js/Mode/ModeEffectTestCreap.js?ver=20240805100232"></script>
+<script type="text/javascript" src="./js/Mode/ModeResult.js?ver=20240805100235"></script>
+<script type="text/javascript" src="./js/src/SnlHelper.js?ver=20240805100233"></script>
+<script type="text/javascript" src="./js/GameMain.js?ver=20240805100233"></script>
+                
+    </body>
+
+</html>
